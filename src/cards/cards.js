@@ -30,7 +30,7 @@ export const goodCards = [
   },
   { key: 11, content: "Egypt has pyramids; we have _____." },
   { key: 12, content: "If _____ did not exist we would have to invent them." },
-];
+].map((card) => ({ ...card, type: "good" }));
 
 export const badCards = [
   { key: 1, content: "The tenth circle of hell is made up of _____" },
@@ -58,7 +58,7 @@ export const badCards = [
     content: "I really don't see the point of _____.",
   },
   { key: 10, content: "I drink to forget _____" },
-];
+].map((card) => ({ ...card, type: "bad" }));
 
 export const improvementCards = [
   { key: 1, content: "_____ could save the world. Or it could kill us all." },
@@ -84,7 +84,7 @@ export const improvementCards = [
     content:
       "If we could improve just one thing for the next sprint, it would be _____.",
   },
-];
+].map((card) => ({ ...card, type: "improvement" }));
 
 export const sprintStarCards = [
   { key: 1, content: "No one puts ______ in the corner." },
@@ -109,4 +109,4 @@ export const sprintStarCards = [
     key: 7,
     content: "I’d recommend ______ to a friend.",
   },
-];
+].map((card) => ({ ...card, type: "star" }));
