@@ -36,7 +36,7 @@ export const badCards = [
   { key: 1, content: "The tenth circle of hell is made up of _____" },
   { key: 2, content: "_____ keeps me up at night." },
   { key: 3, content: "Ain’t nobody got time for _____." },
-  { key: 4, content: "I wouldn’t wish _____ on my worst enemy" },
+  { key: 4, content: "I wouldn’t wish _____ on my worst enemy." },
   {
     key: 5,
     content: "The only thing I regret is _____.",
