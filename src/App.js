@@ -38,16 +38,17 @@ const CardWrapper = styled.div`
 `;
 
 const Card = styled.div`
-  display: grid;
-  place-items: start;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
   background: ${({ type = "good" }) =>
     type === "good"
       ? "#ffff"
       : type === "bad"
       ? "#000"
       : type === "star"
-      ? "#fb8b24"
-      : "#fbc4ab"};
+      ? "#ffe566"
+      : "#d1b2e0"};
   color: ${({ type }) => (type === "bad" ? "#fff" : "#000")};
   width: 300px;
   min-height: 420px;
@@ -81,6 +82,10 @@ const DrawButton = styled.button`
   }
 `;
 
+const Footnote = styled.p`
+  font-size: 10px;
+`;
+
 const decks = [];
 decks.push(goodCards, badCards, improvementCards, sprintStarCards);
 const deck = decks.flat();
@@ -88,7 +93,7 @@ shuffleArray(deck);
 
 function App() {
   const [card, setCard] = useState({
-    content: "Click the button to get started.",
+    content: "Retros Against Humanity.",
   });
 
   function drawCard() {
@@ -96,13 +101,32 @@ function App() {
     setCard(newCard);
   }
 
+  function footnote(card) {
+    if (card.type === "good") {
+      return "Retros Against Humanity | Good cards.";
+    }
+    if (card.type === "bad") {
+      return "Retros Against Humanity | Bad cards.";
+    }
+    if (card.type === "improvement") {
+      return "Retros Against Humanity | Improvement cards.";
+    } else {
+      return "Retros Against Humanity | Sprint Star cards.";
+    }
+  }
+
   return (
     <MainContainer>
       <CardWrapper>
         <h1>Retros Against Humanity</h1>
-        <Card type={card.type}>
-          <p>{card.content}</p>
-        </Card>
+        {card ? (
+          <Card type={card.type}>
+            <p>{card.content}</p>
+            <Footnote>{footnote(card)}</Footnote>
+          </Card>
+        ) : (
+          window.location.reload(true)
+        )}
         <DrawButton
           onClick={() => {
             drawCard();
